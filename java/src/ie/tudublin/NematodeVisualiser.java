@@ -21,7 +21,16 @@ public class NematodeVisualiser extends PApplet
 		{
 			set++;
 			set = (set)%(table.getRowCount());
-		}		
+		}	
+		if (keyCode == RIGHT)
+		{
+			if(set == 0)
+			{
+				set = table.getRowCount();
+			}
+			set--;
+			
+		}	
 	}
 
 
@@ -36,6 +45,7 @@ public class NematodeVisualiser extends PApplet
 		background(0);
 		smooth();	
 		loadNematodes();
+		textAlign(CENTER);
 
 	}
 	
@@ -56,7 +66,7 @@ public class NematodeVisualiser extends PApplet
 	public void draw()
 	{	
 		fill(0);
-
+		background(0);
 
 	
 		
@@ -64,6 +74,8 @@ public class NematodeVisualiser extends PApplet
 
 		for(int i = 0; i < nematodes.get(set).getLength() ; i ++)
 		{
+			
+
 			stroke(map(set , 0 , table.getRowCount() , 0 ,255) , 255,255);
 			float indent = height*0.8f / 10;
 
@@ -75,11 +87,35 @@ public class NematodeVisualiser extends PApplet
 			{
 				line(x1 , y1, x1 + cos(45)*indent, y1 - sin(45)*indent);
 				line(x1 , y1, x1 - cos(45)*indent, y1 - sin(45)*indent);
-				circle(x1 - cos(45)*indent,y1 - sin(45)*indent , 5)
+				circle(x1 - cos(45)*indent,y1 - sin(45)*indent , 5);
 				circle(x1 + cos(45)*indent,y1 - sin(45)*indent , 5);
 			}
+			if(nematodes.get(set).isLegs() == true)
+			{
+				line(x1 - indent , y1 , x1 + indent , y1 );
+			}
+			
+			if(nematodes.get(set).getGender() == "m" && i ==  nematodes.get(set).getLength()-1)
+			{
+				line(x1 , y1 ,x1 , y1+ indent);
+				circle(x1 , y1 + indent , 5);
+			}
+			if(nematodes.get(set).getGender() == "f" && i ==  nematodes.get(set).getLength()-1)
+			{
+				circle(x1, y1 , indent*.8f); 
+			}
+			if(nematodes.get(set).getGender() == "h" && i ==  nematodes.get(set).getLength()-1)
+			{
+				line(x1 , y1 ,x1 , y1+ indent);
+				circle(x1 , y1 + indent , 5);
+				circle(x1, y1 , indent*.8f); 
+			}
+
+
 
 			circle(x1 ,  y1 , indent);
+
+			text(nematodes.get(set).getName(), x1, height*0.9f);
 		}
 
 		
