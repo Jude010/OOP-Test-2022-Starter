@@ -7,11 +7,11 @@ import processing.data.TableRow;
 
 public class Nematode {
 
-    boolean legs;
-    String name;
-    String gender;
-    boolean eyes;
-    int length;
+    private boolean legs;
+    private String name;
+    private String gender;
+    private boolean eyes;
+    private int length;
     
     public boolean isLegs() {
         return legs;
