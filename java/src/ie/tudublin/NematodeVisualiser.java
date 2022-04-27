@@ -73,7 +73,10 @@ public class NematodeVisualiser extends PApplet
 
 			if(nematodes.get(set).isEyes() == true && i == 0)
 			{
-				line(x1 , y1, cos(45)*indent + x1, sin(45)*indent + y1);
+				line(x1 , y1, x1 + cos(45)*indent, y1 - sin(45)*indent);
+				line(x1 , y1, x1 - cos(45)*indent, y1 - sin(45)*indent);
+				circle(x1 - cos(45)*indent,y1 - sin(45)*indent , 5)
+				circle(x1 + cos(45)*indent,y1 - sin(45)*indent , 5);
 			}
 
 			circle(x1 ,  y1 , indent);
